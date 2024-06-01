@@ -1,0 +1,1 @@
+../../firestorage-lambda/lib/fire_basic.py

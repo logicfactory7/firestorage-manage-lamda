@@ -1,0 +1,1 @@
+../../firestorage-lambda/lib/mini_lib.py
