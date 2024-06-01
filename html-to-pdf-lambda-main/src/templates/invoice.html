@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: "BIZ UDPGothic";
+      }
+      .invoice-box {
+        max-width: 800px;
+        margin: auto;
+        font-size: 12px;
+        line-height: 12px;
+        color: #555;
+      }
+      .invoice-box table {
+        width: 100%;
+        line-height: inherit;
+        text-align: left;
+      }
+      .invoice-box table td {
+        padding: 5px;
+        vertical-align: top;
+      }
+      .invoice-box table tr td:nth-child(2) {
+        text-align: right;
+      }
+      .invoice-box table tr td:nth-child(3) {
+        text-align: right;
+      }
+      .invoice-box table tr.top table td {
+        padding-bottom: 20px;
+      }
+      .invoice-box table tr.top table td.title {
+        font-size: 45px;
+        line-height: 45px;
+        color: #333;
+      }
+      .invoice-box table tr.information url td {
+        padding-bottom: 10px;
+      }
+      .invoice-box table tr.information table td {
+        padding-bottom: 40px;
+      }
+      .invoice-box table tr.heading td {
+        background: #eee;
+        border-bottom: 1px solid #ddd;
+        font-weight: bold;
+      }
+      .invoice-box table tr.details td {
+        padding-bottom: 20px;
+      }
+      .invoice-box table tr.item td {
+        border-bottom: 1px solid #eee;
+      }
+      .invoice-box table tr.item.last td {
+        border-bottom: none;
+      }
+      .invoice-box table tr.total td:nth-child(2) {
+        border-top: 2px solid #eee;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="invoice-box">
+      <table cellpadding="0" cellspacing="0">
+        <tr class="top">
+          <td colspan="3">
+            <table>
+              <tr>
+                <td class="title">ダウンロード情報</td>
+                <td>発行日: {{issued_date}}<br /></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr class="url">
+          <td colspan="3">ファイルfirestorageにアップロードされました</td>
+        </tr>
+        <tr class="url">
+          <td colspan="3">以下のURLからダウンロードいただけます。</td>
+        </tr>
+        <tr class="url">
+          <td colspan="3">【ダウンロードURL】 <a href="#">https://firestorage.jp/</a></td>
+        </tr>
+        <tr>
+          <td colspan="3" style="padding-bottom: 20px;">【ダウンロード期限】 {{company.name}}</td>
+        </tr>
+        <tr class="heading">
+          <td>品名</td>
+          <td>数量</td>
+          <td>金額</td>
+        </tr>
+        {% for item in items %}
+        <tr class="item">
+          <td>{{ item.name }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>¥{{ item.price }}</td>
+        </tr>
+        {% endfor %}
+        <tr class="information">
+          <td colspan="3">
+            <table>
+              <tr>
+                <td>
+                </td>
+                <td>
+                  {{company.address}}<br />
+                  {{company.name}}<br />
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+      </table>
+    </div>
+  </body>
+</html>
